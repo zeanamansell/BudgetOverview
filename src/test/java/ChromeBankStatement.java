@@ -51,7 +51,60 @@ public class ChromeBankStatement {
     }
 
     @Test
-    public void readCsvFile() {
+    public void logIn() throws InterruptedException {
+        // Click login button
+        WebElement loginButton = driver.findElement(By.cssSelector("#skip_logon"));
+        loginButton.click();
+
+        //Enter login details and click login
+        String customerNumber = "82816810";
+        String password = "BC7C8EDC9A";
+
+        WebElement idInput = driver.findElement(By.id("user-id"));
+        WebElement passwordInput = driver.findElement(By.id("password"));
+
+        idInput.sendKeys(customerNumber);
+        passwordInput.sendKeys(password);
+
+        WebElement loginSubmitButton = driver.findElement(By.id("submit"));
+        loginSubmitButton.click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#ib-app-container > div > div.d-flex.align-items-center > h1")));
+
+        //Navigate to Visa Debit account
+        WebElement yourAccountsDropbox = driver.findElement(By.cssSelector("#main-menu > ul > li.menu-item.menu-item-transumm > a > span"));
+        yourAccountsDropbox.click();
+        List<WebElement> accountOptions = driver.findElements(By.className("account-name"));
+        accountOptions.get(0).click();
+        Thread.sleep(3000);
+
+        //Export CSV statements
+        WebElement exportSettingsButton = driver.findElement(By.id("transactions-export-panel-toggle"));
+        exportSettingsButton.click();
+        Thread.sleep(3000);
+
+        Select dateRangeDropbox = new Select(driver.findElement(By.name("date-range")));
+        dateRangeDropbox.selectByVisibleText("March 2019");
+
+//        WebElement startDateInput = driver.findElement(By.name("start-date"));
+//        startDateInput.sendKeys("01/03/2019");
+//
+//        WebElement endDateInput = driver.findElement(By.name("end-date"));
+//        endDateInput.sendKeys("25/03/2019");
+
+        Select fileFormat = new Select(driver.findElement(By.id("transactions-export-format")));
+        fileFormat.selectByVisibleText("CSV - Comma Separated Values");
+
+        WebElement exportButton = driver.findElement(By.id("transaction-export-submit"));
+        exportButton.click();
+
+        Thread.sleep(5000);
+
+        //Logoff
+        WebElement logOffButton = driver.findElement(By.id("logout"));
+        logOffButton.click();
+
+        //READING THE DOWNLOADED FILE
 
         //Reading the description and amount from the downloaded statement.
         String statementFilePath = "/Users/zeanamansell/Downloads/06-0821-0886101-00_Transactions_2019-03.csv";
@@ -138,65 +191,10 @@ public class ChromeBankStatement {
             }
         }
 
+        System.out.println("Overview of spending for March 2019: ");
         for (int i = 0; i < monthlyCategories.size(); i++) {
             System.out.println(monthlyCategories.get(i) + ": " + monthlySpend.get(i));
         }
-
-    }
-
-    @Test
-    public void logIn() throws InterruptedException {
-        // Click login button
-        WebElement loginButton = driver.findElement(By.cssSelector("#skip_logon"));
-        loginButton.click();
-
-        //Enter login details and click login
-        String customerNumber = "82816810";
-        String password = "BC7C8EDC9A";
-
-        WebElement idInput = driver.findElement(By.id("user-id"));
-        WebElement passwordInput = driver.findElement(By.id("password"));
-
-        idInput.sendKeys(customerNumber);
-        passwordInput.sendKeys(password);
-
-        WebElement loginSubmitButton = driver.findElement(By.id("submit"));
-        loginSubmitButton.click();
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#ib-app-container > div > div.d-flex.align-items-center > h1")));
-
-        //Navigate to Visa Debit account
-        WebElement yourAccountsDropbox = driver.findElement(By.cssSelector("#main-menu > ul > li.menu-item.menu-item-transumm > a > span"));
-        yourAccountsDropbox.click();
-        List<WebElement> accountOptions = driver.findElements(By.className("account-name"));
-        accountOptions.get(0).click();
-        Thread.sleep(3000);
-
-        //Export CSV statements
-        WebElement exportSettingsButton = driver.findElement(By.id("transactions-export-panel-toggle"));
-        exportSettingsButton.click();
-        Thread.sleep(3000);
-
-        Select dateRangeDropbox = new Select(driver.findElement(By.name("date-range")));
-        dateRangeDropbox.selectByVisibleText("March 2019");
-
-//        WebElement startDateInput = driver.findElement(By.name("start-date"));
-//        startDateInput.sendKeys("01/03/2019");
-//
-//        WebElement endDateInput = driver.findElement(By.name("end-date"));
-//        endDateInput.sendKeys("25/03/2019");
-
-        Select fileFormat = new Select(driver.findElement(By.id("transactions-export-format")));
-        fileFormat.selectByVisibleText("CSV - Comma Separated Values");
-
-        WebElement exportButton = driver.findElement(By.id("transaction-export-submit"));
-        exportButton.click();
-
-        Thread.sleep(5000);
-
-        //Logoff
-        WebElement logOffButton = driver.findElement(By.id("logout"));
-        logOffButton.click();
 
     }
 

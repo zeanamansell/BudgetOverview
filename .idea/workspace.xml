@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6778ea8-1bd0-4ffd-9888-d0231cb74913" name="Default Changelist" comment="" />
+    <list default="true" id="d6778ea8-1bd0-4ffd-9888-d0231cb74913" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ChromeBankStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ChromeBankStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ChromeBankStatement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ChromeBankStatement.class" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,19 +29,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ChromeBankStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-590">
-              <caret line="110" column="20" lean-forward="true" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
+            <state relative-caret-position="153">
+              <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1112#1113#0" expanded="true" />
                 <element signature="e#1167#1168#0" expanded="true" />
-                <element signature="e#4085#4093#0" expanded="true" />
-                <element signature="e#4146#4154#0" expanded="true" />
-                <element signature="e#4989#4997#0" expanded="true" />
-                <element signature="e#5058#5066#0" expanded="true" />
-                <element signature="e#5923#5931#0" expanded="true" />
-                <element signature="e#6408#6416#0" expanded="true" />
-                <element signature="e#6714#6721#0" expanded="true" />
+                <element signature="e#4059#4067#0" expanded="true" />
+                <element signature="e#4120#4128#0" expanded="true" />
+                <element signature="e#4963#4971#0" expanded="true" />
+                <element signature="e#5032#5040#0" expanded="true" />
+                <element signature="e#5897#5905#0" expanded="true" />
+                <element signature="e#6382#6390#0" expanded="true" />
+                <element signature="e#6688#6695#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -50,6 +55,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -65,6 +73,7 @@
     <option name="width" value="1920" />
     <option name="height" value="1057" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -97,7 +106,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553653358079" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553654938822" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -153,24 +162,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ChromeBankStatement_readCsvFile - 2019.03.27 at 14h 59m 21s.xml">
-      <configuration name="ChromeBankStatement.readCsvFile" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChromeBankStatement_readCsvFile - 2019.03.27 at 15h 00m 05s.xml">
-      <configuration name="ChromeBankStatement.readCsvFile" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChromeBankStatement_readCsvFile - 2019.03.27 at 15h 00m 18s.xml">
-      <configuration name="ChromeBankStatement.readCsvFile" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChromeBankStatement_logIn - 2019.03.27 at 15h 17m 25s.xml">
-      <configuration name="ChromeBankStatement.logIn" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChromeBankStatement_readCsvFile - 2019.03.27 at 15h 17m 41s.xml">
-      <configuration name="ChromeBankStatement.readCsvFile" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChromeBankStatement_readCsvFile - 2019.03.27 at 15h 18m 01s.xml">
-      <configuration name="ChromeBankStatement.readCsvFile" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ChromeBankStatement_readCsvFile - 2019.03.27 at 15h 18m 57s.xml">
       <configuration name="ChromeBankStatement.readCsvFile" configurationId="JUnit" />
     </history-entry>
@@ -181,6 +172,24 @@
       <configuration name="ChromeBankStatement.logIn" configurationId="JUnit" />
     </history-entry>
     <history-entry file="ChromeBankStatement_logIn - 2019.03.27 at 15h 22m 04s.xml">
+      <configuration name="ChromeBankStatement.logIn" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ChromeBankStatement_logIn - 2019.03.27 at 15h 26m 20s.xml">
+      <configuration name="ChromeBankStatement.logIn" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ChromeBankStatement_logIn - 2019.03.27 at 15h 33m 22s.xml">
+      <configuration name="ChromeBankStatement.logIn" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ChromeBankStatement_logIn - 2019.03.27 at 15h 33m 51s.xml">
+      <configuration name="ChromeBankStatement.logIn" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ChromeBankStatement_logIn - 2019.03.27 at 15h 35m 05s.xml">
+      <configuration name="ChromeBankStatement.logIn" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ChromeBankStatement_logIn - 2019.03.27 at 15h 41m 32s.xml">
+      <configuration name="ChromeBankStatement.logIn" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ChromeBankStatement_logIn - 2019.03.27 at 15h 45m 20s.xml">
       <configuration name="ChromeBankStatement.logIn" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -217,13 +226,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/statements/RunAfters.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/statements/RunBefores.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -292,6 +294,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-api/3.11.0/selenium-api-3.11.0.jar!/org/openqa/selenium/By.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+          <folding>
+            <element signature="e#4964#4965#0" expanded="true" />
+            <element signature="e#5014#5015#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -299,21 +312,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/statements/RunAfters.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ChromeBankStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-590">
-          <caret line="110" column="20" lean-forward="true" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
+        <state relative-caret-position="153">
+          <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1112#1113#0" expanded="true" />
             <element signature="e#1167#1168#0" expanded="true" />
-            <element signature="e#4085#4093#0" expanded="true" />
-            <element signature="e#4146#4154#0" expanded="true" />
-            <element signature="e#4989#4997#0" expanded="true" />
-            <element signature="e#5058#5066#0" expanded="true" />
-            <element signature="e#5923#5931#0" expanded="true" />
-            <element signature="e#6408#6416#0" expanded="true" />
-            <element signature="e#6714#6721#0" expanded="true" />
+            <element signature="e#4059#4067#0" expanded="true" />
+            <element signature="e#4120#4128#0" expanded="true" />
+            <element signature="e#4963#4971#0" expanded="true" />
+            <element signature="e#5032#5040#0" expanded="true" />
+            <element signature="e#5897#5905#0" expanded="true" />
+            <element signature="e#6382#6390#0" expanded="true" />
+            <element signature="e#6688#6695#0" expanded="true" />
           </folding>
         </state>
       </provider>
