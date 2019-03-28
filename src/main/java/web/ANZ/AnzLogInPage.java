@@ -19,14 +19,12 @@ public class AnzLogInPage {
 
     public void enterLoginDetails(String userCustomerNumber, String customerPassword) {
         //Enter login details and click login
-        String customerNumber = userCustomerNumber;
-        String password = customerPassword;
 
         WebElement idInput = driver.findElement(By.id("user-id"));
         WebElement passwordInput = driver.findElement(By.id("password"));
 
-        idInput.sendKeys(customerNumber);
-        passwordInput.sendKeys(password);
+        idInput.sendKeys(userCustomerNumber);
+        passwordInput.sendKeys(customerPassword);
     }
 
     public AnzUserHomePage logIn() {

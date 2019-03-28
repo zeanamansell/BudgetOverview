@@ -3,7 +3,6 @@ package web.ANZ;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,10 +17,12 @@ public class AnzAccountPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("transaction-search-input"))); //Waits until search bar has loaded
     }
 
-    public void exportCSVStatement() throws InterruptedException {
+    public void exportCSVStatement(String statementMonth, String statementYear) throws InterruptedException {
         openExportParams();
 
-        selectExportParams();
+        String statementDate = statementMonth + " " + statementYear;
+
+        selectExportParams(statementDate);
 
         downloadCSVStatement();
 
@@ -35,9 +36,9 @@ public class AnzAccountPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("transaction-export-submit")));
 //        Thread.sleep(3000);
     }
-    public void selectExportParams() {
+    public void selectExportParams(String statementMonth) {
         Select dateRangeDropbox = new Select(driver.findElement(By.name("date-range")));
-        dateRangeDropbox.selectByVisibleText("March 2019");
+        dateRangeDropbox.selectByVisibleText(statementMonth);
 
         Select fileFormat = new Select(driver.findElement(By.id("transactions-export-format")));
         fileFormat.selectByVisibleText("CSV - Comma Separated Values");

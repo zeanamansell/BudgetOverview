@@ -5,19 +5,21 @@ import com.opencsv.CSVReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReadAnzStatement {
     private List<String> descriptionValues;
     private List<String> amountValues;
+    private String statementMonth;
+    private String statementYear;
+    
+    public ReadAnzStatement(String statementMonth, String statementYear) {
+        this.statementMonth = statementMonth;
+        this.statementYear = statementYear;
 
-
-    public ReadAnzStatement invoke() {
-        //READING THE DOWNLOADED FILE
-
-        //Reading the description and amount from the downloaded statement.
-        String statementFilePath = "/Users/zeanamansell/Downloads/06-0821-0886101-00_Transactions_2019-03.csv";
+        String statementFilePath = getCSVStatementFile(statementMonth, statementYear);
 
         descriptionValues = new ArrayList<String>();
         amountValues = new ArrayList<String>();
@@ -33,7 +35,17 @@ public class ReadAnzStatement {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return this;
+    }
+
+    public String getCSVStatementFile(String statementMonth, String statementYear) {
+        //READING THE DOWNLOADED FILE
+
+        //Reading the description and amount from the downloaded statement.
+
+        String fileDownloadDirectoy = "/Users/zeanamansell/Downloads/";
+        String monthFileName = "06-0821-0886101-00_Transactions_";
+        String file = fileDownloadDirectoy + monthFileName + statementYear + "-" + statementMonth + ".csv";
+        return file;
     }
 
     public void getDescriptionAndAmountValues(List<String[]> allValues) {

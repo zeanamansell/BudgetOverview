@@ -10,6 +10,7 @@ import web.ANZ.AnzHomePage;
 import web.ANZ.AnzLogInPage;
 import web.ANZ.AnzUserHomePage;
 
+import java.time.Month;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,20 +34,33 @@ public class HelloWorld {
         System.out.println("Enter Password: ");
         String password = userInput.next();
 
+        System.out.println("Enter Statement Month (from past 6 months): ");
+        String inputMonth = userInput.next();
+
+        System.out.println("Enter Statement year: ");
+        String statementYear = userInput.next();
+
         userInput.close();
+
+        String statementMonth = Integer.toString((Month.valueOf(inputMonth.toUpperCase()).getValue()));
+        if (statementMonth.length() == 1) {
+            statementMonth = "0" + statementMonth;
+        }
 
         setUpClass();
         setUpBrowser();
 
-        getAnzBankStatement(customerNumber, password);
+        getAnzBankStatement(customerNumber, password, statementMonth, statementYear);
 
-        getBudgetOverview();
+        getBudgetOverview(statementMonth, statementYear);
 
         tearDownBrowser();
     }
 
-    private static void getBudgetOverview() {
-        readAnzStatement = new ReadAnzStatement().invoke();
+    private static void getBudgetOverview(String statementMonth, String statementYear) {
+
+        readAnzStatement = new ReadAnzStatement(statementMonth, statementYear);
+        readAnzStatement.getCSVStatementFile(statementMonth, statementYear);
 
         List<String> descriptionValues = readAnzStatement.getDescriptionValues();
         List<String> amountValues = readAnzStatement.getAmountValues();
@@ -80,13 +94,13 @@ public class HelloWorld {
         WebDriverManager.chromedriver().setup();
     }
 
-    private static void getAnzBankStatement(String customerNumber, String password) throws InterruptedException {
+    private static void getAnzBankStatement(String customerNumber, String password, String statementMonth, String statementYear) throws InterruptedException {
         anzLogInPage = anzHomePage.goToLoginPage();
         anzLogInPage.enterLoginDetails(customerNumber, password);
 
         anzUserHomePage = anzLogInPage.logIn();
         anzAccountPage = anzUserHomePage.goToAccount();
-        anzAccountPage.exportCSVStatement();
+        anzAccountPage.exportCSVStatement(statementMonth, statementYear);
         anzAccountPage.logOut();
     }
 

@@ -29,6 +29,8 @@ public class ChromeBankStatement {
     private ReadAnzStatement readAnzStatement;
     private ReadMasterFile readMasterFile;
     private ProcessBankStatement processBankStatement;
+    private String statementMonth;
+    private String statementYear;
 
     private static ChromeOptions chromeOptions;
 
@@ -61,7 +63,7 @@ public class ChromeBankStatement {
     }
 
     public void getBudgetOverview() {
-        readAnzStatement = new ReadAnzStatement().invoke();
+        readAnzStatement = new ReadAnzStatement(statementMonth, statementYear);
 
         List<String> descriptionValues = readAnzStatement.getDescriptionValues();
         List<String> amountValues = readAnzStatement.getAmountValues();
@@ -83,12 +85,14 @@ public class ChromeBankStatement {
     public void getAnzBankStatement() throws InterruptedException {
         String userCustomerNumber = "82816810";
         String customerNumber = "BC7C8EDC9A";
+        String statementMonth = "March";
+        String statementYear = "2019";
         anzLogInPage = anzHomePage.goToLoginPage();
         anzLogInPage.enterLoginDetails(userCustomerNumber, customerNumber);
 
         anzUserHomePage = anzLogInPage.logIn();
         anzAccountPage = anzUserHomePage.goToAccount();
-        anzAccountPage.exportCSVStatement();
+        anzAccountPage.exportCSVStatement(statementMonth, statementYear);
         anzAccountPage.logOut();
     }
 
