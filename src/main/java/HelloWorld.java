@@ -2,13 +2,8 @@ import bank.CSVStatements.ProcessBankStatement;
 import bank.CSVStatements.ReadAnzStatement;
 import bank.CSVStatements.ReadMasterFile;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 import web.ANZ.AnzAccountPage;
 import web.ANZ.AnzHomePage;
@@ -16,51 +11,41 @@ import web.ANZ.AnzLogInPage;
 import web.ANZ.AnzUserHomePage;
 
 import java.util.List;
+import java.util.Scanner;
 
-import static org.hamcrest.CoreMatchers.not;
+public class HelloWorld {
 
-public class ChromeBankStatement {
+    private static WebDriver driver;
+    private static AnzHomePage anzHomePage;
+    private static AnzLogInPage anzLogInPage;
+    private static AnzUserHomePage anzUserHomePage;
+    private static AnzAccountPage anzAccountPage;
+    private static ReadAnzStatement readAnzStatement;
+    private static ReadMasterFile readMasterFile;
+    private static ProcessBankStatement processBankStatement;
 
-    private WebDriver driver;
-    private AnzHomePage anzHomePage;
-    private AnzLogInPage anzLogInPage;
-    private AnzUserHomePage anzUserHomePage;
-    private AnzAccountPage anzAccountPage;
-    private ReadAnzStatement readAnzStatement;
-    private ReadMasterFile readMasterFile;
-    private ProcessBankStatement processBankStatement;
+    public static void main(String[] args) throws InterruptedException {
+        //Enter login details and click login
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Enter Customer Number: ");
+        String customerNumber = userInput.next();
 
-    private static ChromeOptions chromeOptions;
+        System.out.println("Enter Password: ");
+        String password = userInput.next();
 
-    @BeforeClass
-    public static void setUpClass() {
-        WebDriverManager.chromedriver().setup();
-    }
+        userInput.close();
 
-    @Before
-    public void setUpBrowser() {
-        driver = new ChromeDriver();
-        this.anzHomePage = PageFactory.initElements(this.driver, AnzHomePage.class);
-    }
+        setUpClass();
+        setUpBrowser();
 
-    @After
-    public void tearDownBrowser() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-
-
-    @Test
-    public void getBudgetOutline() throws InterruptedException {
-
-        getAnzBankStatement();
+        getAnzBankStatement(customerNumber, password);
 
         getBudgetOverview();
 
+        tearDownBrowser();
     }
 
-    public void getBudgetOverview() {
+    private static void getBudgetOverview() {
         readAnzStatement = new ReadAnzStatement().invoke();
 
         List<String> descriptionValues = readAnzStatement.getDescriptionValues();
@@ -79,12 +64,25 @@ public class ChromeBankStatement {
         printBudgetOutline(monthlyCategories, monthlySpend);
     }
 
+    //
+    private static void tearDownBrowser() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 
-    public void getAnzBankStatement() throws InterruptedException {
-        String userCustomerNumber = "82816810";
-        String customerNumber = "BC7C8EDC9A";
+    private static void setUpBrowser() {
+        driver = new ChromeDriver();
+        anzHomePage = PageFactory.initElements(driver, AnzHomePage.class);
+    }
+
+    private static void setUpClass() {
+        WebDriverManager.chromedriver().setup();
+    }
+
+    private static void getAnzBankStatement(String customerNumber, String password) throws InterruptedException {
         anzLogInPage = anzHomePage.goToLoginPage();
-        anzLogInPage.enterLoginDetails(userCustomerNumber, customerNumber);
+        anzLogInPage.enterLoginDetails(customerNumber, password);
 
         anzUserHomePage = anzLogInPage.logIn();
         anzAccountPage = anzUserHomePage.goToAccount();
@@ -92,11 +90,11 @@ public class ChromeBankStatement {
         anzAccountPage.logOut();
     }
 
-    public void printBudgetOutline(List<String> monthlyCategories, List<Float> monthlySpend) {
+
+    private static void printBudgetOutline(List<String> monthlyCategories, List<Float> monthlySpend) {
         System.out.println("Overview of spending for March 2019: ");
         for (int i = 0; i < monthlyCategories.size(); i++) {
             System.out.println(monthlyCategories.get(i) + ": " + monthlySpend.get(i));
         }
     }
-
 }
