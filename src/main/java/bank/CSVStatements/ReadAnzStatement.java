@@ -41,10 +41,14 @@ public class ReadAnzStatement {
         //READING THE DOWNLOADED FILE
 
         //Reading the description and amount from the downloaded statement.
+        String monthNumber = Integer.toString((Month.valueOf(statementMonth.toUpperCase()).getValue()));
+        if (monthNumber.length() == 1) {
+            monthNumber = "0" + monthNumber;
+        }
 
         String fileDownloadDirectoy = "/Users/zeanamansell/Downloads/";
         String monthFileName = "06-0821-0886101-00_Transactions_";
-        String file = fileDownloadDirectoy + monthFileName + statementYear + "-" + statementMonth + ".csv";
+        String file = fileDownloadDirectoy + monthFileName + statementYear + "-" + monthNumber + ".csv";
         return file;
     }
 

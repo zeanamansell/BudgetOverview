@@ -70,6 +70,7 @@ public class ProcessBankStatement {
                 monthlyCategorisedItems.add(masterCategoryValues.get(i));
             } else {
                 monthlyCategorisedItems.add(item);
+                // create a new file that 
             }
         }
 

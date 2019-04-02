@@ -35,26 +35,21 @@ public class HelloWorld {
         String password = userInput.next();
 
         System.out.println("Enter Statement Month (from past 6 months): ");
-        String inputMonth = userInput.next();
+        String statementMonth = userInput.next();
 
         System.out.println("Enter Statement year: ");
         String statementYear = userInput.next();
 
         userInput.close();
 
-        String statementMonth = Integer.toString((Month.valueOf(inputMonth.toUpperCase()).getValue()));
-        if (statementMonth.length() == 1) {
-            statementMonth = "0" + statementMonth;
-        }
-
         setUpClass();
         setUpBrowser();
 
         getAnzBankStatement(customerNumber, password, statementMonth, statementYear);
 
-        getBudgetOverview(statementMonth, statementYear);
-
         tearDownBrowser();
+
+        getBudgetOverview(statementMonth, statementYear);
     }
 
     private static void getBudgetOverview(String statementMonth, String statementYear) {
@@ -106,7 +101,7 @@ public class HelloWorld {
 
 
     private static void printBudgetOutline(List<String> monthlyCategories, List<Float> monthlySpend) {
-        System.out.println("Overview of spending for March 2019: ");
+        System.out.println("Overview of spending: ");
         for (int i = 0; i < monthlyCategories.size(); i++) {
             System.out.println(monthlyCategories.get(i) + ": " + monthlySpend.get(i));
         }

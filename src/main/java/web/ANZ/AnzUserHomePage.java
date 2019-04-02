@@ -26,6 +26,9 @@ public class AnzUserHomePage {
         WebElement yourAccountsDropbox = driver.findElement(By.cssSelector("#main-menu > ul > li.menu-item.menu-item-transumm > a > span"));
         yourAccountsDropbox.click();
         List<WebElement> accountOptions = driver.findElements(By.className("account-name"));
+        for (int i = 0; i < accountOptions.size(); i++) {
+            System.out.println("This is what the list of accounts looks like: " + accountOptions.get(i).getText());
+        }
         accountOptions.get(0).click();
 
         return PageFactory.initElements(this.driver, AnzAccountPage.class);
